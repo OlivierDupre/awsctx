@@ -27,7 +27,7 @@ ln -sf ~/.awsctx/completion/awsctx.bash $COMPDIR/awsctx
 cat << FOE >> ~/.bashrc
 
 # awsctx
-source ~/.awsctx
+source ~/.awsctx/.awsctx
 FOE
 ```
 
