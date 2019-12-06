@@ -22,13 +22,28 @@ See [AWS CLI Configure multiple profiles](https://docs.aws.amazon.com/cli/latest
 * For bash:
 ```
 git clone https://github.com/OlivierDupre/awsctx.git ~/.awsctx
+# COMPDIR='/usr/share/bash-completion/completions'
 COMPDIR=$(pkg-config --variable=completionsdir bash-completion)
 ln -sf ~/.awsctx/completion/awsctx.bash $COMPDIR/awsctx
+nb_definitions=`grep awsctx ~/.bashrc | wc -l`
+if [ $nb_definitions -eq 0 ]; then
 cat << FOE >> ~/.bashrc
 
 # awsctx
 source ~/.awsctx/.awsctx
 FOE
+fi
+
+nb_definitions=`grep trim ~/.bashrc | wc -l`
+if [ $nb_definitions -eq 0 ]; then
+cat << FOE >> ~/.bashrc
+function trim
+{
+echo "$1" | xargs
+}
+FOE
+fi
+
 ```
 
 ## Thanks to...
