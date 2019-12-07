@@ -64,14 +64,13 @@ fi
 
 mv ~/.awx/.awsctx ~/.zsh/.awsctx
 
-nb_definitions=`grep 'Always source files' ~/.zshrc | wc -l`
-if [ $nb_definitions -eq 0 ]; then
-cat << FOE >> ~/.zshrc
+```
 
-# Always source files in ~/.zsh
-[[ -d ~/.zsh ]] && for f (~/.zsh/*(.)) { [[ -f $f ]] && source $f } && for f (/~/.zsh/.*(.)) { [[ -f $f ]] && source $f }
-FOE
-fi
+Then `copy` and `paste` the following line to your `~/.zshrc` file.
+
+```
+
+[[ -d ~/.zsh ]] && for f (~/.zsh/*(.)) { [[ -f $f ]] && source $f } && for f (~/.zsh/.*(.)) { [[ -f $f ]] && source $f }
 
 ```
 
