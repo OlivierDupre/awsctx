@@ -1,18 +1,18 @@
-function _awsListAll() {
+function awsall() {
     credentialFileLocation=${AWS_SHARED_CREDENTIALS_FILE};
     if [ -z $credentialFileLocation ]; then
         credentialFileLocation=~/.aws/credentials
     fi
- 
+
     while read line; do
         line=$(trim "$line")
         if [[ $line == "["* ]]; then echo ${line:1:$((${#line}-2))}; fi;
     done < $credentialFileLocation;
 };
- 
-function _awsSwitchProfile() {
+
+function awx() {
    if [ -z $1 ]; then aws configure list; return; fi
-   
+
    exists="$(aws configure get aws_access_key_id --profile $1)"
    if [[ -n $exists ]]; then
        export AWS_DEFAULT_PROFILE=$1;
@@ -23,5 +23,4 @@ function _awsSwitchProfile() {
    fi
 };
 
-alias awsall="_awsListAll"
-alias awsctx="_awsSwitchProfile"
+alias awsctx=awx
